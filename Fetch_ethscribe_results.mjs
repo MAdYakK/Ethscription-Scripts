@@ -8,7 +8,7 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const baseUrl = path.join(__dirname, "folder name here"); //add the directory of your images
+const baseUrl = path.join(__dirname, "your folder name here"); //add the directory of your images
 
 const items = Array.from({ length: 420 }) // change to total number of files
   .fill(0)
@@ -100,9 +100,10 @@ await pMap(
         }
 
         results.push({
-          index: x.index,
-          sha: x.sha,
-          dataURI: x.dataURI,
+          item_index: x.index,
+          current_owner: x.eth ? x.eth.current_owner : null,
+          // sha: x.sha,   // enable if you want this data
+          // dataURI: x.dataURI,  //enable if you want this data
           existsInEthscriptions: Boolean(x.eth),
           transactionHash: x.eth ? x.eth.transaction_hash : null,
         });
